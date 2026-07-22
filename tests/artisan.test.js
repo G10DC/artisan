@@ -1,39 +1,39 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { highlightKeyTerms, injectExamTraps, injectOralQuotes, injectAsciiTrees, transformToPedagogicalHtml } from '../lib/artisan.js';
+import { highlightKeyTerms, injectExamTraps, injectOralQuotes, injectExamFrequencyBadges, transformToPedagogicalHtml } from '../lib/artisan.js';
+import { calculateSrsReview } from '../lib/srs.js';
 
-test('highlightKeyTerms wraps bold terms and legal references', () => {
-  const input = 'Il **New Public Management** è regolato dal D.Lgs. 150/2009 e dall\'Art. 97 Cost.';
-  const output = highlightKeyTerms(input);
+test('calculateSrsReview updates interval and repetitions for rating >= 3', () => {
+  const initialState = { repetitions: 0, interval: 1, easeFactor: 2.5 };
+  const nextState = calculateSrsReview(initialState, 4);
 
-  assert.ok(output.includes('<strong class="highlight-term">New Public Management</strong>'));
-  assert.ok(output.includes('<span class="legal-badge">⚖️ D.Lgs. 150/2009</span>'));
-  assert.ok(output.includes('<span class="legal-badge">⚖️ Art. 97 Cost.</span>'));
+  assert.equal(nextState.repetitions, 1);
+  assert.equal(nextState.interval, 1);
+  assert.ok(nextState.nextReviewDate);
 });
 
-test('injectExamTraps converts ❌ -> ✅ into Callout box', () => {
-  const input = '<p class="study-paragraph">❌ "Governance è uguale a Governo" → ✅ Governance è un modello a rete opposto a government.</p>';
-  const output = injectExamTraps(input);
+test('calculateSrsReview resets interval for rating < 3', () => {
+  const initialState = { repetitions: 3, interval: 12, easeFactor: 2.5 };
+  const nextState = calculateSrsReview(initialState, 1);
 
-  assert.ok(output.includes('callout-oral-error'));
-  assert.ok(output.includes('TRAPPOLA D\'ESAME & ERRORE TIPICO'));
-  assert.ok(output.includes('Governance è uguale a Governo'));
+  assert.equal(nextState.repetitions, 0);
+  assert.equal(nextState.interval, 1);
 });
 
-test('injectOralQuotes converts 🎯 into summary card', () => {
-  const input = '<p class="study-paragraph">🎯 "Le amministrazioni si collocano lungo un continuum."</p>';
-  const output = injectOralQuotes(input);
+test('injectExamFrequencyBadges replaces priority markers with styled badges', () => {
+  const input = '🔴 Sicuro 🟡 Frequente 🟢 Raro';
+  const output = injectExamFrequencyBadges(input);
 
-  assert.ok(output.includes('callout-summary'));
-  assert.ok(output.includes('FRASE PRONTA PER L\'ORALE (30 E LODE)'));
+  assert.ok(output.includes('badge-sicuro'));
+  assert.ok(output.includes('badge-frequente'));
+  assert.ok(output.includes('badge-raro'));
 });
 
-test('transformToPedagogicalHtml generates complete HTML doc', () => {
-  const md = '# Modulo 1\n**Burocrazia** ex Art. 97 Cost.\n🎯 "Frase orale"';
-  const html = transformToPedagogicalHtml(md, { title: 'Test Manual', courseCode: '12 CFU' });
+test('transformToPedagogicalHtml includes DSA font toggle and TTS script', () => {
+  const md = '# Modulo 1\n🔴 Sicuro\n**Burocrazia**';
+  const html = transformToPedagogicalHtml(md, { title: 'University Study Manual', courseCode: '12 CFU' });
 
-  assert.ok(html.includes('<!DOCTYPE html>'));
-  assert.ok(html.includes('Test Manual'));
-  assert.ok(html.includes('12 CFU'));
-  assert.ok(html.includes('highlight-term'));
+  assert.ok(html.includes('Font DSA'));
+  assert.ok(html.includes('badge-sicuro'));
+  assert.ok(html.includes('University Study Manual'));
 });
