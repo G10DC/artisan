@@ -1,26 +1,52 @@
-# 🎨 Artisan — Pedagogical UI/UX & Visual Layout Engine
+# Artisan — Pedagogical UI/UX & Visual Layout Engine
 
-`artisan` is a zero-dependency, ultra-lightweight Node.js engine for converting raw Markdown knowledge bases into interactive, beautifully formatted, high-retention HTML study web applications.
+`artisan` converts markdown knowledge bases into interactive, pedagogically optimized HTML/CSS study applications, enforcing a 6-layer visual hierarchy for fast scanning ("colpo d'occhio") and oral-exam readiness while preserving 100% of source content.
 
-## Features
+## Requirements
 
-- **6-Layer Visual Hierarchy**: Highlighted key terms, legal badges, callout boxes for exam traps (`❌ -> ✅`), oral exam synthesis quotes (`🎯`), and ASCII tree outlines (`🗺️`).
-- **LaTeX Math Decision Algorithms**: Supports $\text{DECIDE}()$ decision trees via KaTeX rendering.
-- **Client-side Mermaid.js**: Renders architecture diagrams and historical timelines.
-- **Interactive Tools**: Live search, progress checkboxes with local storage persistence, 3D flip flashcards, and exam simulator quiz.
-- **Print & PDF Optimization**: Clean `@media print` styles for reading on paper or tablet.
+- Node.js ≥ 18
+- Peer dependencies: Mermaid.js (diagrams), KaTeX (math rendering)
 
-## Usage
+## Core Principles
+
+1. **Zero Information Loss** — every law, date, author, and nuance from source docs is preserved.
+2. **Visual Hierarchy**
+   - Key terms → `<strong class="highlight-term">`
+   - Exam traps → `❌ Falso Mito → ✅ Risposta Esatta` callouts
+   - Oral-exam quotes → `🎯 Frase Pronta per l'Orale` cards
+   - Concept trees → ASCII `🗺️ SCHEMA DI SINTESI`
+   - Cross-topic links → `🔗 COLLEGAMENTI E FILO CONDUTTORE`
+   - Decision logic → KaTeX blocks
+3. **Interactive Tools** — live search, progress tracking (localStorage), 3D flashcards, exam simulator, Mermaid diagrams, dark/light glassmorphism, print/PDF export.
+
+## Quick Start
 
 ```javascript
-import { transformToPedagogicalHtml } from '@g10dc/artisan';
+import { transformToPedagogicalHtml } from './lib/artisan.js';
 
-const html = transformToPedagogicalHtml(markdownContent, {
-  title: 'Manuale di Studio',
-  courseCode: '12 CFU',
-  theme: 'dark'
+const markdown = fs.readFileSync('study_notes.md', 'utf8');
+const html = transformToPedagogicalHtml(markdown, {
+  title: "Manuale di Studio Supremo",   // string, required
+  courseCode: "SPS/04 - 12 CFU",        // string, optional
+  theme: "dark",                         // "dark" | "light"
+  enableQuiz: true,                      // boolean
+  enableFlashcards: true,                // boolean
+  enableKaTeX: true,                     // boolean
+  enableMermaid: true                    // boolean
 });
+fs.writeFileSync('Manuale_Studio.html', html);
 ```
+
+## API Reference
+
+| Method | Parameters | Returns | Description |
+| :--- | :--- | :--- | :--- |
+| `transformToPedagogicalHtml(md, options)` | markdown: string, options: object | string (HTML) | Full-featured study web app from raw markdown |
+| `highlightKeyTerms(text)` | text: string | string | Wraps key concepts/laws/dates in markup |
+| `injectExamTraps(html)` | html: string | string | Formats ❌→✅ traps into callouts |
+| `injectOralQuotes(html)` | html: string | string | Formats 🎯 quotes into synthesis cards |
+| `injectAsciiTrees(html)` | html: string | string | Wraps ASCII trees in styled callouts |
+| `generateDesignSystemCss(theme)` | theme: "dark"\|"light" | string (CSS) | Generates glassmorphic CSS tokens |
 
 ## Testing
 
@@ -28,6 +54,4 @@ const html = transformToPedagogicalHtml(markdownContent, {
 node --test tests/*.test.js
 ```
 
-## License
-
-MIT © G10DC
+Test suite covers markdown parsing, term highlighting, and CSS generation output.
