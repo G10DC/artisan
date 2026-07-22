@@ -1,52 +1,46 @@
-# Artisan — Pedagogical UI/UX & Visual Layout Engine
+# Artisan — Pedagogical UI/UX & Visual Layout Engine for Higher Education
 
-`artisan` converts markdown knowledge bases into interactive, pedagogically optimized HTML/CSS study applications, enforcing a 6-layer visual hierarchy for fast scanning ("colpo d'occhio") and oral-exam readiness while preserving 100% of source content.
+`artisan` is a zero-dependency, ultra-lightweight Node.js engine for converting raw Markdown knowledge bases into interactive, beautifully formatted, high-retention HTML study web applications.
 
-## Requirements
+## 4 Study Phases & 6 Visual Layers
 
-- Node.js ≥ 18
-- Peer dependencies: Mermaid.js (diagrams), KaTeX (math rendering)
+| Study Phase | Student Activity | Active Artisan Layers | Interactive Tools |
+| :--- | :--- | :--- | :--- |
+| 1. Active Reading | Read, highlight, annotate | Layer 1 (Key Terms), Layer 6 (Decision Logic) | Live Search, Term Highlighting |
+| 2. Summarization | Synthesize into topic blocks, map concepts | Layer 4 (ASCII Trees), Layer 5 (Cross-Topic Links), Mermaid Mindmaps | Mermaid mindmaps, synthesis outlines |
+| 3. Active Recall | Spaced repetition, self-assessment | Layer 2 (Exam Traps), 3D Flashcards | 3D Flashcards with SRS, Quiz Simulator, Progress Tracking |
+| 4. Oral Rehearsal | Timed verbal presentation | Layer 3 (Oral Exam Ready Quotes), Oral Simulation | Oral Mode with countdown timer, synthesis quotes |
 
-## Core Principles
+## Features
 
-1. **Zero Information Loss** — every law, date, author, and nuance from source docs is preserved.
-2. **Visual Hierarchy**
-   - Key terms → `<strong class="highlight-term">`
-   - Exam traps → `❌ Falso Mito → ✅ Risposta Esatta` callouts
-   - Oral-exam quotes → `🎯 Frase Pronta per l'Orale` cards
-   - Concept trees → ASCII `🗺️ SCHEMA DI SINTESI`
-   - Cross-topic links → `🔗 COLLEGAMENTI E FILO CONDUTTORE`
-   - Decision logic → KaTeX blocks
-3. **Interactive Tools** — live search, progress tracking (localStorage), 3D flashcards, exam simulator, Mermaid diagrams, dark/light glassmorphism, print/PDF export.
+- **6-Layer Visual Hierarchy**: Highlighted key terms, legal badges, callout boxes for exam traps (`❌ -> ✅`), oral exam synthesis quotes (`🎯`), and ASCII tree outlines (`🗺️`).
+- **Spaced Repetition System (SRS)**: SuperMemo-2 (SM-2) algorithm for optimal memory retention.
+- **Oral Exam Simulation Mode**: Configurable countdown timer (10 minutes) with benchmark oral synthesis sentences.
+- **LaTeX Math Decision Algorithms**: KaTeX case-by-case decision trees (`\begin{cases}`).
+- **Accessibility & DSA Support**: One-click Dyslexia-friendly font toggle and Speech Synthesis (Text-to-Speech).
+- **Client-side Mermaid.js**: Renders mindmaps, architecture diagrams, and historical timelines.
+- **Print & PDF Optimization**: Clean `@media print` styles for reading on paper or tablet.
 
-## Quick Start
+## Usage
 
 ```javascript
 import { transformToPedagogicalHtml } from './lib/artisan.js';
 
 const markdown = fs.readFileSync('study_notes.md', 'utf8');
 const html = transformToPedagogicalHtml(markdown, {
-  title: "Manuale di Studio Supremo",   // string, required
-  courseCode: "SPS/04 - 12 CFU",        // string, optional
-  theme: "dark",                         // "dark" | "light"
-  enableQuiz: true,                      // boolean
-  enableFlashcards: true,                // boolean
-  enableKaTeX: true,                     // boolean
-  enableMermaid: true                    // boolean
+  title: "Master Study Manual",
+  courseCode: "SPS/04 - 12 ECTS",
+  theme: "dark",
+  enableQuiz: true,
+  enableFlashcards: true,
+  enableKaTeX: true,
+  enableMermaid: true,
+  enableOralMode: true,
+  enableDyslexicFont: true,
+  enableTTS: true
 });
-fs.writeFileSync('Manuale_Studio.html', html);
+fs.writeFileSync('Study_Manual.html', html);
 ```
-
-## API Reference
-
-| Method | Parameters | Returns | Description |
-| :--- | :--- | :--- | :--- |
-| `transformToPedagogicalHtml(md, options)` | markdown: string, options: object | string (HTML) | Full-featured study web app from raw markdown |
-| `highlightKeyTerms(text)` | text: string | string | Wraps key concepts/laws/dates in markup |
-| `injectExamTraps(html)` | html: string | string | Formats ❌→✅ traps into callouts |
-| `injectOralQuotes(html)` | html: string | string | Formats 🎯 quotes into synthesis cards |
-| `injectAsciiTrees(html)` | html: string | string | Wraps ASCII trees in styled callouts |
-| `generateDesignSystemCss(theme)` | theme: "dark"\|"light" | string (CSS) | Generates glassmorphic CSS tokens |
 
 ## Testing
 
@@ -54,4 +48,6 @@ fs.writeFileSync('Manuale_Studio.html', html);
 node --test tests/*.test.js
 ```
 
-Test suite covers markdown parsing, term highlighting, and CSS generation output.
+## License
+
+MIT © G10DC

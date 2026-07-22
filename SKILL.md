@@ -1,152 +1,136 @@
 ---
 name: artisan
-description: Motore di layout visivo e gerarchia pedagogica per manuali di studio universitari, appunti interattivi e preparazione ad esami orali e scritti.
-audience: studente universitario italiano
-exam_type: orale + scritto
+description: Pedagogical UI/UX layout, typography, and visual hierarchy engine for study manuals, educational web apps, and interactive learning documents.
+audience: university students
+exam_type: oral + written
 ---
 
-# Artisan — Motore di Layout Visivo e Gerarchia Pedagogica per Studio Universitario
+# Artisan — Pedagogical UI/UX & Visual Layout Engine for Higher Education
 
-`artisan` trasforma basi di conoscenza in markdown in applicazioni web di studio interattive, ottimizzate per il metodo di studio universitario italiano. Applica una gerarchia visiva a 6 livelli mappata sulle 4 fasi di studio (lettura attiva, schematizzazione, memorizzazione, preparazione all'orale) preservando il 100% del contenuto della fonte.
-
----
-
-## Le 4 Fasi di Studio e i 6 Livelli Visivi
-
-| Fase di Studio | Cosa fa lo studente | Livelli Artisan attivi | Strumenti interattivi |
-|:---|:---|:---|:---|
-| 1. Lettura Attiva | Legge, sottolinea, prende appunti | Layer 1 (Termini Chiave), Layer 6 (Logiche Decisionali) | Live Search, evidenziazione termini |
-| 2. Schematizzazione | Sintetizza in blocchi tematici, crea mappe | Layer 4 (Alberi ASCII), Layer 5 (Collegamenti), Mappe Mentali Mermaid | Mermaid mindmap, schemi di sintesi |
-| 3. Memorizzazione Attiva | Ripassa con ripasso distribuito, si autovaluta | Layer 2 (Trappole d'Esame), Flashcard | Flashcard 3D con SRS, Quiz Simulator, Progress Tracking |
-| 4. Preparazione Orale | Prova l'esposizione verbale a tempo | Layer 3 (Frase Pronta per l'Orale), Simulazione Orale | Modalità Orale con timer, frasi-sintesi |
+`artisan` converts Markdown knowledge bases into interactive, pedagogically optimized HTML/CSS study applications. It enforces a 6-layer visual hierarchy mapped to the 4 phases of effective study (active reading, summarization, active recall, and oral exam rehearsal) while preserving 100% of source content.
 
 ---
 
-## I 6 Livelli della Gerarchia Visiva
+## 4 Study Phases & 6 Visual Layers
 
-### Layer 1 — Termini Chiave (`<strong class="highlight-term">`)
-Auto-rilevazione di concetti, leggi, date, nomi di autori e distinzioni teoriche. Stile ad alto impatto per il "colpo d'occhio" durante la rilettura rapida.
-
-### Layer 2 — Trappole d'Esame (`❌ Falso Mito → ✅ Risposta Esatta`)
-Callout color-coded (ambra/rosa) che evidenziano gli errori più comuni che il professore tipicamente indaga all'orale. Ogni trappola mostra:
-- ❌ La risposta errata diffusa
-- ✅ La risposta corretta con riferimento normativo o teorico
-- 📄 Fonte (pagina manuale / articolo di legge / lezione)
-
-### Layer 3 — Frase Pronta per l'Orale (`🎯`)
-Card di sintesi verde smeraldo per il richiamo verbale immediato. Ogni card contiene:
-- Una frase di apertura già formulata per l'esposizione orale
-- I 2-3 concetti chiave da sviluppare
-- Un collegamento al argomento successivo per mantenere il discorso fluido
-
-### Layer 4 — Alberi di Sintesi (`🗺️ SCHEMA DI SINTESI`)
-Outline ad albero in ASCII per la schematizzazione gerarchica. Utilizzare anche **mappe mentali Mermaid** per connessioni non gerarchiche.
-
-### Layer 5 — Collegamenti e Filo Conduttore (`🔗`)
-Sezioni che collegano concetti tra capitoli e argomenti, creando un filo conduttore che il professore apprezza negli esami orali articolati.
-
-### Layer 6 — Logiche Decisionali (KaTeX `\begin{cases}`)
-Blocchi matematici per alberi decisionali e casistiche (es. "Quando si applica l'art. X invece dell'art. Y?").
+| Study Phase | Student Activity | Active Artisan Layers | Interactive Tools |
+| :--- | :--- | :--- | :--- |
+| 1. Active Reading | Read, highlight, annotate | Layer 1 (Key Terms), Layer 6 (Decision Logic) | Live Search, Term Highlighting |
+| 2. Summarization | Synthesize into topic blocks, map concepts | Layer 4 (ASCII Trees), Layer 5 (Cross-Topic Links), Mermaid Mindmaps | Mermaid mindmaps, synthesis outlines |
+| 3. Active Recall | Spaced repetition, self-assessment | Layer 2 (Exam Traps), 3D Flashcards | 3D Flashcards with SRS, Quiz Simulator, Progress Tracking |
+| 4. Oral Rehearsal | Timed verbal presentation | Layer 3 (Oral Exam Ready Quotes), Oral Simulation | Oral Mode with countdown timer, synthesis quotes |
 
 ---
 
-## Marcatori di Priorità d'Esame
+## The 6 Layers of Visual Hierarchy
 
-Ogni sezione può essere etichettata con un indicatore di frequenza d'esame:
+### Layer 1 — Key Terms (`<strong class="highlight-term">`)
+Automatic detection of core concepts, legal statutes, key dates, author names, and theoretical distinctions. High-contrast styling for rapid visual scanning ("colpo d'occhio").
 
-| Marcatore | Significato | Stile visivo |
-|:---|:---|:---|
-| 🔴 Sicuro | Argomento richiesto quasi ogni anno | Bordo rosso, badge "SICURO" |
-| 🟡 Frequentemente | Richiesto regolarmente, non ogni volta | Bordo ambra, badge "FREQUENTE" |
-| 🟢 Raramente | Possibile ma non probabile | Bordo verde, badge "Raro" |
+### Layer 2 — Exam Traps (`❌ Common Pitfall → ✅ Correct Answer`)
+Color-coded callout boxes (amber/rose) highlighting frequent misconceptions examined during oral tests:
+- ❌ Common incorrect answer
+- ✅ Correct response with legal or theoretical reference
+- 📄 Source citation (textbook chapter / statute article / lecture date)
 
-Lo studente può filtrare per priorità durante il ripasso finale.
+### Layer 3 — Oral Exam Ready Quotes (`🎯`)
+Emerald green synthesis cards for instant verbal recall:
+- Opening sentence pre-formulated for spoken presentation
+- 2-3 core concepts to develop
+- Cross-topic link to ensure fluid speech transitions
 
----
+### Layer 4 — Synthesis Concept Trees (`🗺️ SYNTHESIS OUTLINE`)
+ASCII tree outlines for hierarchical visual structuring alongside **Mermaid mindmaps** for non-hierarchical concept connections.
 
-## Strumenti di Studio Interattivi
+### Layer 5 — Cross-Topic Links (`🔗`)
+Dedicated sections linking concepts across chapters and modules, building a cohesive narrative valued in oral examinations.
 
-### Fase 1 — Lettura Attiva
-- **Ricerca Live**: filtro testuale istantaneo su tutte le sezioni
-- **Evidenziazione Termini**: auto-rilevamento di concetti chiave con stile personalizzato
-
-### Fase 2 — Schematizzazione
-- **Mappe Mentali Mermaid**: diagrammi client-side per connessioni concettuali
-- **Alberi ASCII**: outline gerarchici per sintesi rapida
-- **Modalità Schema**: nasconde il testo discorsivo e mostra solo schemi, tabelle e mappe
-
-### Fase 3 — Memorizzazione Attiva
-- **Flashcard 3D con SRS (Spaced Repetition System)**: algoritmo di ripasso distribuito basato sulla curva dell'oblio (SM-2). Frequenza di riproposizione calcolata in base alla confidenza dichiarata (0-5).
-- **Quiz Simulator**: domande a risposta multipla e aperta con correzione immediata
-- **Progress Tracking**: tracciamento per argomento con localStorage, mostra percentuale di completamento per area tematica
-
-### Fase 4 — Preparazione all'Orale
-- **Modalità Orale**: estrae un argomento casuale dai "Sicuri" e attiva un timer configurabile (es. 3 minuti per organizzare, 10 minuti per esporre). Lo studente può registrare la propria esposizione e confrontarla con la Frase Pronta.
-- **Simulatore di Sequenza**: simula la sequenza tipica di domande del professore (argomento → approfondimento → collegamento trasversale)
-- **Gestione Ansia**: suggerimenti di respirazione e framing mentale prima della simulazione
+### Layer 6 — Decision Logic (KaTeX `\begin{cases}`)
+Mathematical case-by-case decision trees (e.g., "When to apply Statute X vs Statute Y?").
 
 ---
 
-## Accessibilità e DSA
+## Exam Priority Markers
 
-- **Font dislessico**: opzione per OpenDyslexic o font ad alta leggibilità
-- **Contrasto alto**: modalità ad alto contrasto per ipovisione
-- **Text-to-Speech**: sintesi vocale per ascolto del materiale (supporto stile di apprendimento auditivo)
-- **Riduzione carico cognitivo**: frasi brevi, forma attiva, modo indicativo, niente doppie negazioni, blocchi tematici — in linea con le linee guida per materiale didattico accessibile
+Every topic section can be tagged with an exam frequency marker:
+
+| Marker | Meaning | Visual Style |
+| :--- | :--- | :--- |
+| 🔴 High Priority | Examined almost every semester | Red border, "HIGH PRIORITY" badge |
+| 🟡 Frequent | Examined regularly | Amber border, "FREQUENT" badge |
+| 🟢 Rare | Occasional / peripheral topic | Green border, "RARE" badge |
+
+Students can filter by priority during final exam revision.
 
 ---
 
-## Tracciamento Bibliografico
+## Interactive Study Tools
 
-Ogni concetto può includere metadati di provenienza:
+### Phase 1 — Active Reading
+- **Live Search**: Instant text filtering across all modules.
+- **Term Highlighting**: Automatic detection and visual badging of statutes and key concepts.
 
-```yaml
-source:
-  type: manuale | lezione | articolo | sentenza
-  reference: "Cap. 3, pp. 45-67" | "Lezione 12/03/2026" | "Art. 41 Cost." | "Cass. 12345/2024"
-  page: 45
-  exam_frequency: sicuro | frequente | raro
+### Phase 2 — Summarization
+- **Mermaid Mindmaps**: Client-side concept relation diagrams.
+- **ASCII Trees**: Hierarchical structure outlines.
+- **Outline View Mode**: Hides prose and displays only outlines, tables, and diagrams.
+
+### Phase 3 — Active Recall
+- **3D Flashcards with SRS (Spaced Repetition System)**: Ebbinghaus forgetting curve algorithm (SuperMemo-2). Review intervals calculated from confidence rating (0-5).
+- **Quiz Simulator**: Multiple-choice questions with instant explanations.
+- **Progress Tracking**: Topic completion monitoring stored in `localStorage`.
+
+### Phase 4 — Oral Rehearsal
+- **Oral Simulation Mode**: Randomly extracts a "High Priority" topic and triggers a configurable countdown timer (e.g., 10 minutes). Students can rehearse out loud and reveal the benchmark oral synthesis sentence.
+- **Sequence Simulator**: Replicates typical oral exam questioning patterns (topic → deep dive → cross-topic link).
+
+---
+
+## Accessibility & Inclusive Learning
+
+- **Dyslexia-Friendly Font**: One-click toggle for high-readability fonts with expanded line spacing.
+- **Text-to-Speech (TTS)**: Built-in speech synthesis for auditory learners.
+- **High Contrast Theme**: Dark/Light glassmorphic theme with accessibility mode.
+- **Print & PDF Export**: Clean `@media print` styles omitting navigation UI for reading on paper or tablet.
+
+---
+
+## Quick Start
+
+```javascript
+import { transformToPedagogicalHtml } from './lib/artisan.js';
+
+const markdown = fs.readFileSync('study_notes.md', 'utf8');
+const html = transformToPedagogicalHtml(markdown, {
+  title: "Master Study Manual",
+  courseCode: "SPS/04 - 12 ECTS",
+  theme: "dark",
+  enableQuiz: true,
+  enableFlashcards: true,
+  enableKaTeX: true,
+  enableMermaid: true,
+  enableOralMode: true,
+  enableDyslexicFont: true,
+  enableTTS: true
+});
+fs.writeFileSync('Study_Manual.html', html);
 ```
 
----
+## API Reference
 
-## API e Configurazione
-
-### Opzioni di Trasformazione
-
-| Opzione | Tipo | Default | Descrizione |
-|:---|:---|:---|:---|
-| `title` | `string` | — | Titolo del manuale |
-| `courseCode` | `string` | `""` | Codice corso (es. "SPS/04 - 12 CFU") |
-| `theme` | `"dark" \| "light"` | `"dark"` | Tema visivo (glassmorphism) |
-| `enableQuiz` | `boolean` | `false` | Attiva quiz simulator |
-| `enableFlashcards` | `boolean` | `false` | Attiva flashcard 3D con SRS |
-| `enableKaTeX` | `boolean` | `false` | Attiva rendering matematico KaTeX |
-| `enableMermaid` | `boolean` | `false` | Attiva diagrammi e mappe mentali Mermaid |
-| `enableOralMode` | `boolean` | `false` | Attiva modalità simulazione orale |
-| `enableDyslexicFont` | `boolean` | `false` | Attiva font OpenDyslexic |
-| `enableTTS` | `boolean` | `false` | Attiva sintesi vocale |
-
----
-
-## Struttura del Repository
-
-```
-artisan/
-├── lib/
-│   ├── artisan.js              # Motore core
-│   ├── srs.js                  # Algoritmo spaced repetition
-│   └── tts.js                  # Modulo text-to-speech
-├── tests/
-│   ├── artisan.test.js
-│   └── srs.test.js
-└── README.md
-```
-
----
+| Method | Parameters | Returns | Description |
+| :--- | :--- | :--- | :--- |
+| `transformToPedagogicalHtml(md, options)` | markdown: string, options: object | string (HTML) | Full-featured study web application from raw Markdown |
+| `highlightKeyTerms(text)` | text: string | string | Wraps key concepts/statutes/dates in visual markup |
+| `injectExamTraps(html)` | html: string | string | Formats ❌→✅ traps into callout boxes |
+| `injectOralQuotes(html)` | html: string | string | Formats 🎯 quotes into synthesis cards |
+| `injectAsciiTrees(html)` | html: string | string | Wraps ASCII trees in monospaced callout boxes |
+| `generateDesignSystemCss(theme)` | theme: "dark"\|"light" | string (CSS) | Generates responsive glassmorphic CSS tokens |
 
 ## Testing
 
 ```bash
 node --test tests/*.test.js
 ```
+
+License: MIT © G10DC
