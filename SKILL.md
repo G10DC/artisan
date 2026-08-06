@@ -1,8 +1,11 @@
 ---
 name: artisan
-description: Pedagogical UI/UX layout, typography, and visual hierarchy engine for study manuals, educational web apps, and interactive learning documents.
-audience: university students
-exam_type: oral + written
+description: >-
+  Pedagogical UI/UX layout, typography, and visual hierarchy engine for study
+  manuals, educational web apps, and interactive learning documents. Use when
+  converting Markdown knowledge bases into interactive study applications with
+  layered visual hierarchy mapped to cognitive learning phases. Never use for
+  general-purpose web design; never use for non-educational content layouts.
 ---
 
 # Artisan — Pedagogical UI/UX & Visual Layout Engine for Higher Education
