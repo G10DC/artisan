@@ -141,9 +141,19 @@ License: MIT © G10DC
 
 ---
 
-## ⚡ Spark Breakthrough Enhancement
+## Spark Breakthrough Enhancement
 
 - **Feature**: **Auto-Design System Synthesizer**
 - **Description**: Converts wireframe images or text specs into state-of-the-art glassmorphism CSS tokens.
 - **Synergy**: Integrated with `scribe` (OCR/Vision) & `spark` (aesthetics).
 - **Framework**: Applied via the `spark` 4-Lens Lateral Ideation Engine.
+
+
+## When to use
+
+- Primary domain workflow execution as specified in frontmatter description.
+
+
+## When NOT to use
+
+- Tasks outside declared skill scope or handled by specialized sibling skills.
