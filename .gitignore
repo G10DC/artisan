@@ -1,3 +1,7 @@
 node_modules/
 .ds_store
 *.log
+
+# Enforced by G10DC Pruning
+.ast-cache.json
+.env
