@@ -1,5 +1,6 @@
 ---
 name: artisan
+status: implemented
 description: >-
   Pedagogical UI/UX layout, typography, and visual hierarchy engine for study
   manuals, educational web apps, and interactive learning documents. Use when
@@ -138,22 +139,16 @@ node --test tests/*.test.js
 
 License: MIT © G10DC
 
-
----
-
-## Spark Breakthrough Enhancement
-
-- **Feature**: **Auto-Design System Synthesizer**
-- **Description**: Converts wireframe images or text specs into state-of-the-art glassmorphism CSS tokens.
-- **Synergy**: Integrated with `scribe` (OCR/Vision) & `spark` (aesthetics).
-- **Framework**: Applied via the `spark` 4-Lens Lateral Ideation Engine.
-
-
 ## When to use
 
-- Primary domain workflow execution as specified in frontmatter description.
-
+- Converting a Markdown study guide or knowledge base into a self-contained, interactive HTML
+  study application (flashcards, quiz, oral-exam rehearsal mode) for exam prep.
+- You want the 6-layer visual hierarchy (key terms, exam traps, oral quotes, synthesis trees,
+  cross-links, decision logic) applied consistently across a set of study notes.
 
 ## When NOT to use
 
-- Tasks outside declared skill scope or handled by specialized sibling skills.
+- **General-purpose web design or a marketing/product page** — this is scoped to pedagogical
+  study-manual layout, not a general HTML/CSS generator.
+- **Non-educational content** — the layers (exam traps, oral rehearsal, SRS flashcards) assume
+  an exam-prep use case; they don't map onto arbitrary content.
