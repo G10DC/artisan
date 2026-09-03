@@ -11,7 +11,7 @@ description: >-
 
 # Artisan — Pedagogical UI/UX & Visual Layout Engine for Higher Education
 
-`artisan` converts Markdown knowledge bases into interactive, pedagogically optimized HTML/CSS study applications. It enforces a 6-layer visual hierarchy mapped to the 4 phases of effective study (active reading, summarization, active recall, and oral exam rehearsal) while preserving 100% of source content.
+`artisan` converts Markdown knowledge bases into interactive, pedagogically optimized HTML/CSS study applications. It enforces a 6-layer visual hierarchy mapped to the 4 phases of effective study (active reading, summarization, active recall, and oral exam rehearsal) while preserving the source content -- including images, fenced code blocks and links, which earlier versions silently dropped.
 
 ---
 
@@ -53,6 +53,32 @@ Dedicated sections linking concepts across chapters and modules, building a cohe
 Mathematical case-by-case decision trees (e.g., "When to apply Statute X vs Statute Y?").
 
 ---
+
+## Markdown the parser understands
+
+Hand-rolled parser, so this is the whole list. Anything else becomes a paragraph.
+
+| Source | Rendered as |
+| :-- | :-- |
+| `# ## ### ####` | headings, with a slug id and a "Studiato" checkbox on `##` |
+| `- ` / `* ` / `1. ` | study lists |
+| `\| a \| b \|` | a scrollable study table |
+| `> ...` | a callout, typed from its own wording (trap / legal / mnemonic / summary) |
+| `---` | section divider |
+| `**bold**` | Layer 1 key term |
+| `` `code` `` | inline code, escaped and never re-parsed as markup |
+| ```` ```lang ```` fence | a labelled code block, contents verbatim and escaped |
+| `![alt](src)` | a captioned `<figure>`; a title attribute wins over the alt as caption |
+| `[label](url)` | a link; external targets get `rel="noopener noreferrer"` |
+
+Images and links pass through `safeUrl`: http(s), `mailto:`, anchors, relative
+paths and base64 `data:image/*` only. Anything else -- `javascript:` included
+-- degrades to the plain alt or label text instead of emitting a tag. Every
+interpolated string, the document title and course code included, goes through
+`escapeHtml`.
+
+Frame images from `yt-digest` work directly: point `src` at the PNG, or embed
+it as a data URI to keep the page self-contained.
 
 ## Exam Priority Markers
 
@@ -130,6 +156,9 @@ fs.writeFileSync('Study_Manual.html', html);
 | `injectOralQuotes(html)` | html: string | string | Formats 🎯 quotes into synthesis cards |
 | `injectAsciiTrees(html)` | html: string | string | Wraps ASCII trees in monospaced callout boxes |
 | `generateDesignSystemCss(theme)` | theme: "dark"\|"light" | string (CSS) | Generates responsive glassmorphic CSS tokens |
+| `parseMarkdownToCleanHtml(md)` | md: string | string (HTML) | Block-level Markdown to HTML, without the app shell |
+| `escapeHtml(text)` | text: any | string | Escapes `& < > " '` for an HTML context |
+| `safeUrl(url)` | url: string | string | The URL if its scheme is allowed, otherwise `""` |
 
 ## Testing
 
@@ -152,3 +181,6 @@ License: MIT © G10DC
   study-manual layout, not a general HTML/CSS generator.
 - **Non-educational content** — the layers (exam traps, oral rehearsal, SRS flashcards) assume
   an exam-prep use case; they don't map onto arbitrary content.
+- **Producing the study notes in the first place** — this renders Markdown you already
+  have. For a book use `alembic`; for a video use `yt-digest`, then feed its digest
+  Markdown here.
